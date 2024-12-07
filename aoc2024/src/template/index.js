@@ -30,7 +30,7 @@ run({
     tests: [
       {
         input: exampleInput,
-        expected: "",
+        expected: ""
       },
     ],
     solution: part2,
