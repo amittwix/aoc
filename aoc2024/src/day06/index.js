@@ -30,13 +30,11 @@ const turnMap = {
   right: "down",
 };
 
-const travel = (_matrix, startPosition, obstaclePosition) => {
+const travel = (matrix, startPosition, obstaclePosition) => {
   const visited = new Set();
   const turns = new Set();
-  let matrix = _matrix;
 
   if (obstaclePosition) {
-    matrix = structuredClone(_matrix);
     matrix[obstaclePosition[0]][obstaclePosition[1]] = "#";
   }
 
@@ -95,10 +93,10 @@ const part2 = (rawInput) => {
   const startPosition = getStartPosition(matrix);
 
   let sum = 0;
-  travel(matrix, startPosition).forEach((pos) => {
+  travel(parseInput(rawInput), startPosition).forEach((pos) => {
     const [y, x] = pos.split(",").map(Number);
 
-    const loop = travel(matrix, startPosition, [y, x]);
+    const loop = travel(parseInput(rawInput), startPosition, [y, x]);
     if (loop) {
       sum++;
     }
