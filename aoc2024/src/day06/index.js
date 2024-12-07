@@ -33,9 +33,10 @@ const turnMap = {
 const travel = (_matrix, startPosition, obstaclePosition) => {
   const visited = new Set();
   const turns = new Set();
-  const matrix = JSON.parse(JSON.stringify(_matrix));
+  let matrix = _matrix;
 
   if (obstaclePosition) {
+    matrix = structuredClone(_matrix);
     matrix[obstaclePosition[0]][obstaclePosition[1]] = "#";
   }
 
